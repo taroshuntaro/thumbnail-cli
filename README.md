@@ -43,9 +43,14 @@ python3 thumbnail.py --title "タイトル" --output my-thumbnail.png
 
 | テンプレート名 | 説明 |
 |---|---|
-| `default` | 白背景・ダークテキスト・青アクセントバー（デフォルト）|
-| `dark` | ダーク背景・白テキスト・水色アクセントバー |
-| `gradient` | パープル→ブルーのグラデーション背景・白テキスト |
+| `default` | 白背景・ダークテキスト（デフォルト）|
+| `dark` | ダーク背景・白テキスト |
+| `gradient` | パープル→ブルーのグラデーション |
+| `gradient-sunset` | オレンジ→ホットピンクのグラデーション |
+| `gradient-ocean` | ティール→ネイビーのグラデーション |
+| `gradient-forest` | ダークグリーン→ライムのグラデーション |
+| `gradient-rose` | ディープパープル→コーラルピンクのグラデーション |
+| `gradient-sakura` | チェリーピンク→ペールピンクのグラデーション |
 
 ## オプション
 
@@ -75,13 +80,29 @@ thumbnail-cli/
 │   ├── base.py        # 抽象基底クラス
 │   ├── default.py     # 白背景テンプレート
 │   ├── dark.py        # ダークテンプレート
-│   └── gradient.py    # グラデーションテンプレート
+│   └── gradient.py    # グラデーションテンプレート群（6バリアント）
+├── skill/
+│   ├── SKILL.md       # コーディングエージェント向けスキル定義
+│   └── thumbnail-cli.skill  # インストール用スキルパッケージ
 ├── sample/            # サンプル生成画像
 ├── fonts/             # フォントキャッシュ（自動生成）
 ├── tests/             # テストスイート
 ├── requirements.txt
 └── README.md
 ```
+
+## コーディングエージェントで使う（スキル）
+
+`skill/thumbnail-cli.skill` を [GitHub Copilot CLI](https://githubnext.com/projects/copilot-cli) などのコーディングエージェントにインストールすると、自然言語でサムネイルを生成できます。
+
+```
+# 使用例
+「note記事「Pythonで始める機械学習入門」のサムネイルを作ってください」
+「gradient-sakura テンプレートで桜の記事のサムネイルを作って」
+「副業ガイドの記事に合うサムネイル、著者名も入れてください」
+```
+
+スキルが自動的にテンプレートを選択し、コマンドを実行して画像を生成します。
 
 ## 将来の拡張予定
 
