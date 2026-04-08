@@ -1,12 +1,22 @@
 from templates.base import BaseTemplate
 from templates.default import DefaultTemplate
 from templates.dark import DarkTemplate
-from templates.gradient import GradientTemplate
+from templates.gradient import (
+    GradientTemplate,
+    GradientSunsetTemplate,
+    GradientOceanTemplate,
+    GradientForestTemplate,
+    GradientRoseTemplate,
+)
 
 _TEMPLATES: dict = {
     "default": DefaultTemplate,
     "dark": DarkTemplate,
     "gradient": GradientTemplate,
+    "gradient-sunset": GradientSunsetTemplate,
+    "gradient-ocean": GradientOceanTemplate,
+    "gradient-forest": GradientForestTemplate,
+    "gradient-rose": GradientRoseTemplate,
 }
 
 

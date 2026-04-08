@@ -70,6 +70,26 @@ def test_gradient_template_all_options():
     _assert_valid_thumbnail(img)
 
 
+def test_gradient_sunset_template():
+    img = get_template("gradient-sunset").render(title="夕焼けグラデーション")
+    _assert_valid_thumbnail(img)
+
+
+def test_gradient_ocean_template():
+    img = get_template("gradient-ocean").render(title="オーシャングラデーション")
+    _assert_valid_thumbnail(img)
+
+
+def test_gradient_forest_template():
+    img = get_template("gradient-forest").render(title="フォレストグラデーション")
+    _assert_valid_thumbnail(img)
+
+
+def test_gradient_rose_template():
+    img = get_template("gradient-rose").render(title="ローズグラデーション")
+    _assert_valid_thumbnail(img)
+
+
 def test_template_font_weight_bold():
     template = get_template("default")
     img = template.render(title="フォントウェイトテスト", font_weight=900)
