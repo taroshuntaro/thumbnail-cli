@@ -36,3 +36,35 @@ def test_default_template_long_title():
 def test_unknown_template_raises():
     with pytest.raises(ValueError, match="Unknown template"):
         get_template("nonexistent")
+
+
+def test_dark_template_title_only():
+    template = get_template("dark")
+    img = template.render(title="ダークテーマテスト")
+    _assert_valid_thumbnail(img)
+
+
+def test_dark_template_all_options():
+    template = get_template("dark")
+    img = template.render(
+        title="ダークテーマ",
+        subtitle="サブタイトル",
+        author="著者",
+    )
+    _assert_valid_thumbnail(img)
+
+
+def test_gradient_template_title_only():
+    template = get_template("gradient")
+    img = template.render(title="グラデーションテスト")
+    _assert_valid_thumbnail(img)
+
+
+def test_gradient_template_all_options():
+    template = get_template("gradient")
+    img = template.render(
+        title="グラデーション",
+        subtitle="サブタイトル",
+        author="著者",
+    )
+    _assert_valid_thumbnail(img)

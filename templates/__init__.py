@@ -1,8 +1,12 @@
 from templates.base import BaseTemplate
 from templates.default import DefaultTemplate
+from templates.dark import DarkTemplate
+from templates.gradient import GradientTemplate
 
 _TEMPLATES: dict = {
     "default": DefaultTemplate,
+    "dark": DarkTemplate,
+    "gradient": GradientTemplate,
 }
 
 
