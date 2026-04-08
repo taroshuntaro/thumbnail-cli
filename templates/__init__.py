@@ -7,6 +7,7 @@ from templates.gradient import (
     GradientOceanTemplate,
     GradientForestTemplate,
     GradientRoseTemplate,
+    GradientSakuraTemplate,
 )
 
 _TEMPLATES: dict = {
@@ -17,6 +18,7 @@ _TEMPLATES: dict = {
     "gradient-ocean": GradientOceanTemplate,
     "gradient-forest": GradientForestTemplate,
     "gradient-rose": GradientRoseTemplate,
+    "gradient-sakura": GradientSakuraTemplate,
 }
 
 

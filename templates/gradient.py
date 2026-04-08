@@ -130,3 +130,12 @@ class GradientRoseTemplate(_GradientBase):
     SUBTITLE_COLOR = (255, 220, 235)
     AUTHOR_COLOR = (255, 190, 210)
 
+
+class GradientSakuraTemplate(_GradientBase):
+    """Cherry Pink → Pale Sakura（桜）"""
+    GRAD_TOP = (210, 80, 130)
+    GRAD_BOTTOM = (255, 175, 200)
+    TITLE_COLOR = (255, 255, 255)
+    SUBTITLE_COLOR = (255, 235, 242)
+    AUTHOR_COLOR = (255, 215, 228)
+

@@ -90,6 +90,11 @@ def test_gradient_rose_template():
     _assert_valid_thumbnail(img)
 
 
+def test_gradient_sakura_template():
+    img = get_template("gradient-sakura").render(title="桜グラデーション")
+    _assert_valid_thumbnail(img)
+
+
 def test_template_font_weight_bold():
     template = get_template("default")
     img = template.render(title="フォントウェイトテスト", font_weight=900)
