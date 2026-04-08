@@ -30,7 +30,6 @@ class DarkTemplate(BaseTemplate):
         author_font = get_font(30, font_weight)
         content_w = self.WIDTH - PADDING * 2
 
-        draw.rectangle([(0, 0), (self.WIDTH, ACCENT_H)], fill=ACCENT_COLOR)
 
         title_lines = wrap_text(draw, title, title_font, content_w)
         title_lh = draw.textbbox((0, 0), "Ag", font=title_font)[3]
@@ -43,7 +42,7 @@ class DarkTemplate(BaseTemplate):
 
         content_block_h = title_block_h + sub_block_h
 
-        available_top = ACCENT_H + PADDING
+        available_top = PADDING
         available_bottom = self.HEIGHT - (60 if author else PADDING)
         available_h = available_bottom - available_top
         block_y = available_top + max(0, (available_h - content_block_h) // 2)

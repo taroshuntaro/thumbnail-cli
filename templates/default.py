@@ -30,8 +30,7 @@ class DefaultTemplate(BaseTemplate):
         author_font = get_font(30, font_weight)
         content_w = self.WIDTH - PADDING * 2
 
-        # Accent bar at top
-        draw.rectangle([(0, 0), (self.WIDTH, ACCENT_H)], fill=ACCENT_COLOR)
+        # Accent bar removed — clean white background only
 
         # Calculate content block height
         title_lines = wrap_text(draw, title, title_font, content_w)
@@ -46,7 +45,7 @@ class DefaultTemplate(BaseTemplate):
         content_block_h = title_block_h + sub_block_h
 
         # Vertically center content block
-        available_top = ACCENT_H + PADDING
+        available_top = PADDING
         available_bottom = self.HEIGHT - (60 if author else PADDING)
         available_h = available_bottom - available_top
         block_y = available_top + max(0, (available_h - content_block_h) // 2)
