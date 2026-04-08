@@ -52,6 +52,24 @@ def test_cli_all_options(tmp_path):
     assert os.path.exists(output)
 
 
+def test_cli_font_weight(tmp_path):
+    output = str(tmp_path / "bold.png")
+    result = subprocess.run(
+        [sys.executable, CLI, "--title", "ボールド", "--font-weight", "900", "--output", output],
+        capture_output=True, text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    assert os.path.exists(output)
+
+
+def test_cli_font_weight_invalid(tmp_path):
+    result = subprocess.run(
+        [sys.executable, CLI, "--title", "テスト", "--font-weight", "999"],
+        capture_output=True, text=True,
+    )
+    assert result.returncode != 0
+
+
 def test_cli_missing_title_exits_nonzero():
     result = subprocess.run(
         [sys.executable, CLI],

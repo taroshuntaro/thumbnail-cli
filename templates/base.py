@@ -13,6 +13,7 @@ class BaseTemplate(ABC):
         title: str,
         subtitle: Optional[str] = None,
         author: Optional[str] = None,
+        font_weight: int = 700,
     ) -> Image.Image:
         """Render a 1280×670 thumbnail image."""
         ...

@@ -1,8 +1,8 @@
 from typing import Optional
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
 from templates.base import BaseTemplate
-from font_manager import get_font_path
+from font_manager import get_font
 from text_renderer import wrap_text, draw_text_centered
 
 BG_COLOR = (255, 255, 255)
@@ -20,14 +20,14 @@ class DefaultTemplate(BaseTemplate):
         title: str,
         subtitle: Optional[str] = None,
         author: Optional[str] = None,
+        font_weight: int = 700,
     ) -> Image.Image:
         img = Image.new("RGB", (self.WIDTH, self.HEIGHT), BG_COLOR)
         draw = ImageDraw.Draw(img)
-        font_path = get_font_path()
 
-        title_font = ImageFont.truetype(font_path, 72)
-        subtitle_font = ImageFont.truetype(font_path, 40)
-        author_font = ImageFont.truetype(font_path, 30)
+        title_font = get_font(72, font_weight)
+        subtitle_font = get_font(40, font_weight)
+        author_font = get_font(30, font_weight)
         content_w = self.WIDTH - PADDING * 2
 
         # Accent bar at top

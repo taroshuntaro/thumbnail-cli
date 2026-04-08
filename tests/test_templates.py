@@ -68,3 +68,15 @@ def test_gradient_template_all_options():
         author="著者",
     )
     _assert_valid_thumbnail(img)
+
+
+def test_template_font_weight_bold():
+    template = get_template("default")
+    img = template.render(title="フォントウェイトテスト", font_weight=900)
+    _assert_valid_thumbnail(img)
+
+
+def test_template_font_weight_thin():
+    template = get_template("dark")
+    img = template.render(title="フォントウェイトテスト", font_weight=100)
+    _assert_valid_thumbnail(img)

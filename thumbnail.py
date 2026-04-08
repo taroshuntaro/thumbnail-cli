@@ -32,7 +32,17 @@ def main() -> None:
         default=None,
         help="出力ファイル名（デフォルト: thumbnail-{title}.png）",
     )
+    parser.add_argument(
+        "--font-weight",
+        type=int,
+        default=700,
+        metavar="WEIGHT",
+        help="フォントウェイト 100-900 (デフォルト: 700). 100=Thin, 400=Regular, 700=Bold, 900=Black",
+    )
     args = parser.parse_args()
+
+    if not 100 <= args.font_weight <= 900:
+        parser.error("--font-weight は 100〜900 の範囲で指定してください")
 
     output = args.output or f"thumbnail-{sanitize_filename(args.title)}.png"
     template = get_template(args.template)
@@ -40,6 +50,7 @@ def main() -> None:
         title=args.title,
         subtitle=args.subtitle,
         author=args.author,
+        font_weight=args.font_weight,
     )
     img.save(output)
     print(f"✅ Saved: {output}  ({WIDTH}×{HEIGHT}px, template={args.template})")

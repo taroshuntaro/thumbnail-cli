@@ -1,6 +1,11 @@
 from PIL import ImageDraw, ImageFont
 from typing import List, Tuple
 
+# Characters that must not appear at the start of a line (JIS X 4051)
+_KINSOKU_START = frozenset(
+    "。、）」』】｝…ー・っっぁぁぃぅぇぉァィゥェォゃゅょゎャュョヮ！？!?.,‥"
+)
+
 
 def wrap_text(
     draw: ImageDraw.ImageDraw,
@@ -8,10 +13,11 @@ def wrap_text(
     font: ImageFont.FreeTypeFont,
     max_width: int,
 ) -> List[str]:
-    """Wrap text to fit within max_width pixels.
+    """Wrap text to fit within max_width pixels with kinsoku (禁則処理).
 
     Wraps at word boundaries for Latin text; falls back to character-level
-    wrapping for long words and CJK text (no spaces).
+    wrapping for long words and CJK text (no spaces). Prohibited line-start
+    characters (句読点 etc.) are kept on the previous line.
     """
     if not text:
         return [""]
@@ -30,8 +36,13 @@ def wrap_text(
             for char in word:
                 test = current + char
                 if draw.textbbox((0, 0), test, font=font)[2] > max_width and current:
-                    lines.append(current)
-                    current = char
+                    if char in _KINSOKU_START:
+                        # Absorb prohibited char into current line (slight overflow)
+                        lines.append(test)
+                        current = ""
+                    else:
+                        lines.append(current)
+                        current = char
                 else:
                     current = test
         else:
