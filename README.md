@@ -1,11 +1,18 @@
-# note サムネイル生成ツール
+# thumbnail-cli
 
-note.com 投稿用のサムネイル画像（1280×670px）を CLI で生成します。
+テキストからサムネイル画像を CLI で生成するツールです。  
+Python + Pillow 製で、テンプレートを選ぶだけでシンプルにサムネイルを作れます。
+
+> **現在対応しているサイズ**
+> - **note.com** 用：1280×670px
+>
+> 今後は Zenn・Qiita・OGP（1200×630）・YouTube サムネイル（1280×720）など、  
+> 各プラットフォームのサイズへの対応を予定しています。
 
 ## セットアップ
 
 ```bash
-cd note-thumbnail
+cd thumbnail-cli
 pip install -r requirements.txt
 ```
 
@@ -23,6 +30,10 @@ python3 thumbnail.py --title "タイトル" --subtitle "サブタイトル" --au
 # テンプレート指定
 python3 thumbnail.py --title "タイトル" --template dark
 python3 thumbnail.py --title "タイトル" --template gradient
+
+# フォントウェイトを変更（100=Thin ～ 900=Black、デフォルト: 700/Bold）
+python3 thumbnail.py --title "タイトル" --font-weight 400
+python3 thumbnail.py --title "タイトル" --font-weight 900
 
 # 出力ファイル名を指定
 python3 thumbnail.py --title "タイトル" --output my-thumbnail.png
@@ -44,6 +55,7 @@ python3 thumbnail.py --title "タイトル" --output my-thumbnail.png
 | `--subtitle` | サブタイトル | なし |
 | `--author` | 著者名 | なし |
 | `--template` | テンプレート名 | `default` |
+| `--font-weight` | フォントウェイト（100–900） | `700`（Bold） |
 | `--output` | 出力ファイル名 | `thumbnail-{title}.png` |
 
 ## テスト実行
@@ -55,15 +67,16 @@ python3 -m pytest -v
 ## ディレクトリ構成
 
 ```
-note-thumbnail/
+thumbnail-cli/
 ├── thumbnail.py       # CLI エントリポイント
 ├── font_manager.py    # フォント自動ダウンロード
-├── text_renderer.py   # テキスト描画ユーティリティ
+├── text_renderer.py   # テキスト描画ユーティリティ（禁則処理対応）
 ├── templates/
 │   ├── base.py        # 抽象基底クラス
 │   ├── default.py     # 白背景テンプレート
 │   ├── dark.py        # ダークテンプレート
 │   └── gradient.py    # グラデーションテンプレート
+├── sample/            # サンプル生成画像
 ├── fonts/             # フォントキャッシュ（自動生成）
 ├── tests/             # テストスイート
 ├── requirements.txt
@@ -72,6 +85,7 @@ note-thumbnail/
 
 ## 将来の拡張予定
 
+- **他プラットフォーム対応**：Zenn・Qiita・OGP・YouTube サムネイルなど各サイズへの対応
 - 背景画像対応（`--background image.jpg`）
 - AI 画像生成連携
 - 複数枚バッチ生成（CSV 入力）
