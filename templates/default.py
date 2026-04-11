@@ -26,7 +26,7 @@ class DefaultTemplate(BaseTemplate):
         draw = ImageDraw.Draw(img)
 
         title_font = get_font(72, font_weight)
-        subtitle_font = get_font(40, font_weight)
+        subtitle_font = get_font(48, font_weight)
         author_font = get_font(30, font_weight)
         content_w = self.WIDTH - PADDING * 2
 
