@@ -105,3 +105,45 @@ def test_template_font_weight_thin():
     template = get_template("dark")
     img = template.render(title="フォントウェイトテスト", font_weight=100)
     _assert_valid_thumbnail(img)
+
+
+def test_split_template_title_only():
+    img = get_template("split").render(title="スプリットレイアウト")
+    _assert_valid_thumbnail(img)
+
+
+def test_split_template_all_options():
+    img = get_template("split").render(
+        title="スプリットレイアウト",
+        subtitle="左パネルと右パネルの分割デザイン",
+        author="著者名",
+    )
+    _assert_valid_thumbnail(img)
+
+
+def test_border_template_title_only():
+    img = get_template("border").render(title="ボーダーレイアウト")
+    _assert_valid_thumbnail(img)
+
+
+def test_border_template_all_options():
+    img = get_template("border").render(
+        title="ボーダーレイアウト",
+        subtitle="カラー枠線のデザイン",
+        author="著者名",
+    )
+    _assert_valid_thumbnail(img)
+
+
+def test_stripe_template_title_only():
+    img = get_template("stripe").render(title="ストライプレイアウト")
+    _assert_valid_thumbnail(img)
+
+
+def test_stripe_template_all_options():
+    img = get_template("stripe").render(
+        title="ストライプレイアウト",
+        subtitle="斜めストライプ背景のデザイン",
+        author="著者名",
+    )
+    _assert_valid_thumbnail(img)

@@ -1,6 +1,6 @@
 ---
 name: thumbnail-cli
-description: "Invoke this skill to run the thumbnail-cli tool and generate 1280×670px thumbnail images for note.com articles and blog posts. You MUST use this skill whenever the user asks to create a thumbnail (サムネイル), サムネ, header image, OGP image, or article cover image — even casually phrased as 「サムネイル作って」「note記事の画像が欲しい」or 'make a thumbnail for my post about X'. This skill is essential because it knows the exact tool path, the full list of available templates (default, dark, gradient, gradient-sunset, gradient-ocean, gradient-forest, gradient-rose, gradient-sakura), CLI flags (--subtitle, --author, --font-weight, --output), and the template-selection logic that maps content type to the best visual style. Without this skill you cannot correctly invoke the tool."
+description: "Invoke this skill to run the thumbnail-cli tool and generate 1280×670px thumbnail images for note.com articles and blog posts. You MUST use this skill whenever the user asks to create a thumbnail (サムネイル), サムネ, header image, OGP image, or article cover image — even casually phrased as 「サムネイル作って」「note記事の画像が欲しい」or 'make a thumbnail for my post about X'. This skill is essential because it knows the exact tool path, the full list of available templates (default, dark, gradient, gradient-sunset, gradient-ocean, gradient-forest, gradient-rose, gradient-sakura, split, border, stripe), CLI flags (--subtitle, --author, --font-weight, --output), and the template-selection logic that maps content type to the best visual style. Without this skill you cannot correctly invoke the tool."
 ---
 
 # thumbnail-cli
@@ -42,6 +42,9 @@ python3 /home/ss160341/_work/thumbnail-cli/thumbnail.py \
 | `gradient-forest` | Dark Green → Lime | Nature, wellness, health, environment |
 | `gradient-rose` | Deep Purple → Coral Pink | Beauty, fashion, romance, creative writing |
 | `gradient-sakura` | Cherry Pink → Pale Pink | Japanese culture, spring, soft or delicate topics |
+| `split` | Left indigo panel + right white | Bold visual contrast, editorial, clean two-tone look |
+| `border` | White background + blue frame | Simple and polished, standout framing, versatile |
+| `stripe` | White + diagonal light-blue stripes | Subtle texture, fresh, energetic, modern |
 
 ## Selecting a template
 
@@ -57,6 +60,9 @@ python3 /home/ss160341/_work/thumbnail-cli/thumbnail.py \
 - Beauty/fashion/romance: "美容", "ファッション", "恋愛", "コーデ" → `gradient-rose`
 - Creative, broad topics → `gradient`
 - Neutral, undecided, informational → `default`
+- Bold two-tone editorial feel: "特集", "まとめ", "解説", "レポート" → `split`
+- Clean, professional framing: "レポート", "発表", "報告", "ニュース" → `border`
+- Fresh, energetic, modern: "挑戦", "新しい", "スタート", "はじめての" → `stripe`
 
 When you auto-select, briefly explain your reasoning after generating the image.
 

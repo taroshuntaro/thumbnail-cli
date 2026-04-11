@@ -9,6 +9,7 @@ from templates.gradient import (
     GradientRoseTemplate,
     GradientSakuraTemplate,
 )
+from templates.layout import SplitTemplate, BorderTemplate, StripeTemplate
 
 _TEMPLATES: dict = {
     "default": DefaultTemplate,
@@ -19,6 +20,9 @@ _TEMPLATES: dict = {
     "gradient-forest": GradientForestTemplate,
     "gradient-rose": GradientRoseTemplate,
     "gradient-sakura": GradientSakuraTemplate,
+    "split": SplitTemplate,
+    "border": BorderTemplate,
+    "stripe": StripeTemplate,
 }
 
 

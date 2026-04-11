@@ -24,7 +24,7 @@ def main() -> None:
     parser.add_argument(
         "--template",
         default="default",
-        choices=["default", "dark", "gradient", "gradient-sunset", "gradient-ocean", "gradient-forest", "gradient-rose", "gradient-sakura"],
+        choices=["default", "dark", "gradient", "gradient-sunset", "gradient-ocean", "gradient-forest", "gradient-rose", "gradient-sakura", "split", "border", "stripe"],
         help="テンプレート名（デフォルト: default）",
     )
     parser.add_argument(
